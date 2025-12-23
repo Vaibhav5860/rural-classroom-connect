@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from './client';
 
 const API_BASE = '/api/classes';
 

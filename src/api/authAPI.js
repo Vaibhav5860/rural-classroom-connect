@@ -1,13 +1,4 @@
-import axios from 'axios';
-
-// Add a request interceptor to attach the token
-axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+import axios from './client';
 
 const API_BASE = '/api/auth';
 

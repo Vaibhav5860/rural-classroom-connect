@@ -1,12 +1,16 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const cors = require('cors');
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+// Enable CORS for frontend; set CORS_ORIGIN to restrict in production
+app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
 
 app.use(express.json());
 

@@ -24,6 +24,8 @@ This project requires a MongoDB Atlas connection for the backend. Please:
 - Create a MongoDB Atlas cluster and a database user with `readWrite` privileges on your database.
 - Add your current machine IP (or CI IPs) to the Network Access whitelist in Atlas.
 - Set the connection string in `backend/.env` as `MONGO_URI` (a sample is in `backend/.env.example`).
+- When deploying frontend to Vercel, set `VITE_API_BASE` to your deployed backend URL (e.g., `https://my-backend.up.railway.app`).
+- In your backend host (Railway), set `CORS_ORIGIN` to your frontend URL (or leave unset to allow all origins during testing).
 
 Important security notes:
 
