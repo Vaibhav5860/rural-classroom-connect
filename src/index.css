@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    --background: 210 20% 96%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 174 72% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 215 25% 25%;
+
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 35 95% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 174 72% 40%;
+
+    --radius: 0.75rem;
+
+    --success: 142 72% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 35 95% 55%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 200 85% 50%;
+    --info-foreground: 0 0% 100%;
+
+    --sidebar-background: 215 25% 15%;
+    --sidebar-foreground: 210 15% 85%;
+    --sidebar-primary: 174 72% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 25% 22%;
+    --sidebar-accent-foreground: 210 15% 95%;
+    --sidebar-border: 215 20% 25%;
+    --sidebar-ring: 174 72% 50%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(174 72% 40%), hsl(174 72% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(35 95% 50%), hsl(35 95% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(215 25% 15%), hsl(215 25% 25%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(215 25% 15% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(215 25% 15% / 0.1), 0 2px 4px -2px hsl(215 25% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(215 25% 15% / 0.1), 0 4px 6px -4px hsl(215 25% 15% / 0.1);
+    --shadow-glow: 0 0 20px hsl(174 72% 40% / 0.3);
+  }
+
+  .dark {
+    --background: 215 25% 10%;
+    --foreground: 210 15% 95%;
+
+    --card: 215 25% 13%;
+    --card-foreground: 210 15% 95%;
+
+    --popover: 215 25% 13%;
+    --popover-foreground: 210 15% 95%;
+
+    --primary: 174 72% 50%;
+    --primary-foreground: 215 25% 10%;
+
+    --secondary: 215 20% 18%;
+    --secondary-foreground: 210 15% 90%;
+
+    --muted: 215 20% 18%;
+    --muted-foreground: 210 15% 60%;
+
+    --accent: 35 95% 55%;
+    --accent-foreground: 215 25% 10%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 174 72% 50%;
+
+    --sidebar-background: 215 30% 8%;
+    --sidebar-foreground: 210 15% 85%;
+    --sidebar-primary: 174 72% 50%;
+    --sidebar-primary-foreground: 215 25% 10%;
+    --sidebar-accent: 215 25% 15%;
+    --sidebar-accent-foreground: 210 15% 95%;
+    --sidebar-border: 215 20% 18%;
+    --sidebar-ring: 174 72% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
