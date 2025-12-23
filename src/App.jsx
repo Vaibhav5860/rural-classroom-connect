@@ -26,6 +26,7 @@ import AttendanceReport from "./pages/student/AttendanceReport";
 import LiveClassStudent from "./pages/student/LiveClassStudent";
 import Announcements from "./pages/shared/Announcements";
 import Profile from "./pages/Profile";
+import HealthCheck from "./pages/HealthCheck";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ function AppRoutes() {
       <Route path="/live/student/:classId" element={<ProtectedRoute role="student"><LiveClassStudent /></ProtectedRoute>} />
       <Route path="/announcements" element={<ProtectedRoute><Announcements /></ProtectedRoute>} />
       <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+      <Route path="/health" element={<HealthCheck />} />
       <Route path="/class/:id" element={<ProtectedRoute><ClassList /></ProtectedRoute>} />
       <Route path="*" element={<NotFound />} />
     </Routes>
