@@ -86,7 +86,7 @@ function AppRoutes() {
 // export default App;
 
 
-const API = "https://rural-classroom-connect-production.up.railway.app";
+const API = import.meta.env.VITE_API_BASE_URL;
 
 export default function App() {
   fetch(`${API}/api/health`)
