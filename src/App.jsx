@@ -67,20 +67,33 @@ function AppRoutes() {
   );
 }
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <ConfirmProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AppRoutes />
-          </BrowserRouter>
-        </ConfirmProvider>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
+// const App = () => (
+//   <QueryClientProvider client={queryClient}>
+//     <AuthProvider>
+//       <TooltipProvider>
+//         <ConfirmProvider>
+//           <Toaster />
+//           <Sonner />
+//           <BrowserRouter>
+//             <AppRoutes />
+//           </BrowserRouter>
+//         </ConfirmProvider>
+//       </TooltipProvider>
+//     </AuthProvider>
+//   </QueryClientProvider>
+// );
 
-export default App;
+// export default App;
+
+
+const API = "https://rural-classroom-connect-production.up.railway.app";
+
+export default function App() {
+  fetch(`${API}/api/health`)
+    .then(res => res.json())
+    .then(data => console.log("API OK:", data))
+    .catch(err => console.error("API FAIL:", err));
+
+  return <h1>Testing backend connection</h1>;
+}
+

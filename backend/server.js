@@ -10,7 +10,28 @@ connectDB();
 const app = express();
 
 // Enable CORS for frontend; set CORS_ORIGIN to restrict in production
-app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+// app.use(cors({ origin: process.env.CORS_ORIGIN || '*' }));
+const allowedOrigins = [
+  "https://rural-classroom-connect.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow server-to-server or tools like curl/postman
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
+app.options("*", cors());
 
 app.use(express.json());
 
