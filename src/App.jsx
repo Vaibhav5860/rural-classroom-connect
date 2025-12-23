@@ -86,7 +86,7 @@ function AppRoutes() {
 // export default App;
 
 
-const API = "https://<your-railway-app>.up.railway.app";
+const API = "https://rural-classroom-connect-production.up.railway.app";
 
 export default function App() {
   fetch(`${API}/api/health`)
