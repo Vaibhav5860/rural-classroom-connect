@@ -75,7 +75,7 @@ export default function Materials() {
                   id={m._id}
                   title={m.title}
                   type={m.type && m.type.includes('pdf') ? 'pdf' : m.type && m.type.includes('video') ? 'video' : 'other'}
-                  downloadUrl={`http://localhost:5000${m.fileUrl}`} // prepend backend URL
+                  downloadUrl={`${import.meta.env.VITE_API_BASE_URL}${m.fileUrl}`} // prepend backend URL
                   uploadedAt={new Date(m.createdAt).toLocaleDateString()}
                 />
               ))}
