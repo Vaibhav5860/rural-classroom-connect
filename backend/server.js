@@ -32,7 +32,22 @@ app.get('/api/health', async (req, res) => {
         const mongoose = require('mongoose');
         const connected = mongoose.connection.readyState === 1;
         const host = mongoose.connection.host || null;
-        res.json({ ok: true, dbConnected: connected, dbHost: host });
+        const nodeVersion = process.version;
+        const mongooseVersion = mongoose.version || require('mongoose/package.json').version;
+        const uptime = process.uptime();
+        const env = process.env.NODE_ENV || 'development';
+        const usingAtlas = !!(process.env.MONGO_URI && process.env.MONGO_URI.includes('mongodb+srv'));
+
+        res.json({
+            ok: true,
+            env,
+            nodeVersion,
+            mongooseVersion,
+            uptime,
+            dbConnected: connected,
+            dbHost: host,
+            usingAtlas
+        });
     } catch (err) {
         res.status(500).json({ ok: false, error: err.message });
     }
