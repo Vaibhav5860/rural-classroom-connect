@@ -57,27 +57,7 @@ app.get('/api/health', async (req, res) => {
     }
 });
 
-// Dev-only debug endpoint to test DB writes/reads. Disabled in production.
-app.get('/api/debug/test-db', async (req, res) => {
-    if (process.env.NODE_ENV === 'production') return res.status(403).json({ ok: false, message: 'Debug endpoint disabled in production' });
 
-    try {
-        const bcrypt = require('bcryptjs');
-        const User = require('./models/User');
-        const testEmail = `debug-test-${Date.now()}@example.com`;
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash('password', salt);
-
-        const user = await User.create({ name: 'Debug Tester', email: testEmail, password: hashedPassword });
-        // cleanup
-        await User.deleteOne({ _id: user._id });
-
-        return res.json({ ok: true, message: 'DB write/read succeeded', testEmail });
-    } catch (err) {
-        console.error('[debug] test-db error:', err.stack || err);
-        return res.status(500).json({ ok: false, error: err.message || String(err) });
-    }
-});
 
 // Global error handler to ensure JSON response on unhandled errors
 app.use((err, req, res, next) => {
